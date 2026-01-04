@@ -1,0 +1,36 @@
+import React from 'react'
+import './RelatedProducts.css'
+import Item from '../Item/Item'
+import { useContext } from 'react'
+import { AllContext } from '../../context/AllContext'
+
+
+const RelatedProducts = ({ currentProductId }) => {
+  const { all_products } = useContext(AllContext);
+
+
+  const related = all_products
+  .filter(item => item.id !== Number(currentProductId))
+  .slice(0, 4);
+
+  return (
+    <div className='relatedproducts'>
+      <h1>Related Products</h1>
+      <hr />
+      <div className="relatedproducts-item">
+        {related.map((item, i) => (
+          <Item 
+            key={i} 
+            id={item.id} 
+            name={item.name}  
+            image={item.image} 
+            new_price={item.new_price} 
+            old_price={item.old_price}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default RelatedProducts;
