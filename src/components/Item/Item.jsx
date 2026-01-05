@@ -1,7 +1,6 @@
 import React from 'react'
 import './Item.css'
 import { Link } from 'react-router-dom'
-import Product from '../../pages/Product'
 const Item = (props) => {
   return (
     <div className='item'>
